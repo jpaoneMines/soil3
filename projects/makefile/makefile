@@ -38,6 +38,7 @@ $(BIN): $(OBJ)
 	@echo Done. As root, type 'make install' to install the library.
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
+	mkdir -p obj
 	$(CXX) $(CXXFLAGS) $(INCPATH) -o $@ -c $<
 
 
