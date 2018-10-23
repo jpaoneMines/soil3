@@ -13,7 +13,7 @@ INCDIR = ../../src
 OBJDIR = obj
 
 #CHANGE TO WHERE GLEW IS INCLUDED
-INCPATH = -I/usr/local/include
+INCPATH = -I/usr/include
 
 CXX = gcc
 CXXFLAGS = -O2 -s -Wall
@@ -32,13 +32,14 @@ BIN = $(LIBDIR)/$(LIB)
 all: $(BIN)
 
 $(BIN): $(OBJ)
+	mkdir -p $(LIBDIR)
 	ar r $(BIN) $(OBJ)
 	ranlib $(BIN)
 	@echo -------------------------------------------------------------------
 	@echo Done. As root, type 'make install' to install the library.
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
-	mkdir -p obj
+	mkdir -p $(OBJDIR)
 	$(CXX) $(CXXFLAGS) $(INCPATH) -o $@ -c $<
 
 
